@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6974b3b1b3f11ae409955e0ce7bc0156
+timeCreated: 1499803842
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 95547
+  packageName: Artsate - PBR Weapon Pack
+  packageVersion: 1.0
+  assetPath: Assets/Pbr Weapons v1/Knife/Materials/Knife.mat
+  uploadId: 193176

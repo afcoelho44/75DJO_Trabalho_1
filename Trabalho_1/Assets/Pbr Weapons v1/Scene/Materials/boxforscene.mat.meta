@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c8a6c34fd558367448895959ce543c07
+timeCreated: 1500029477
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 95547
+  packageName: Artsate - PBR Weapon Pack
+  packageVersion: 1.0
+  assetPath: Assets/Pbr Weapons v1/Scene/Materials/boxforscene.mat
+  uploadId: 193176
