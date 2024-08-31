@@ -12,6 +12,8 @@ public class MovimentarPersonagem : MonoBehaviour
     public float velocidade = 6f;
     public float alturaPulo = 6f;
     public float gravidade = -20f;
+    public AudioClip somPulo;
+    private AudioSource audioSrc;
 
     public Transform checaChao;
     public float raioEsfera = 0.4f;
@@ -31,6 +33,7 @@ public class MovimentarPersonagem : MonoBehaviour
         // No play do jogo pega um componente do tipo CharacterController que estiver associado a essa classe
         controle = GetComponent<CharacterController>();
         cameraTransform= Camera.main.transform;
+        audioSrc = GetComponent<AudioSource>();
     }
     void OnDrawGizmosSelected() { 
         Gizmos.color = Color.yellow;
@@ -60,6 +63,8 @@ public class MovimentarPersonagem : MonoBehaviour
         if (!levantarBloqueado && estaNoChao && Input.GetButtonDown("Jump")) {
 
             velocidadeCai.y = Mathf.Sqrt(alturaPulo * -2f * gravidade);
+            audioSrc.clip = somPulo;
+            audioSrc.Play();
         }
 
         if (!estaNoChao) {

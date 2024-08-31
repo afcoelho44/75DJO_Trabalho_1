@@ -11,6 +11,9 @@ public class Glock : MonoBehaviour
     public GameObject posEfeitoTiro;
     public GameObject faisca;
     private AudioSource somTiro;
+    private int carregador = 3;
+    private int municao = 17;
+    public AudioClip[] clips;
     void Start()
     {
         estahAtirando = false;
@@ -21,13 +24,46 @@ public class Glock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) {
+        if (anim.GetBool("acaoOcorrendo")) {
+            return;
+        }
+        if (Input.GetButtonDown("Fire1"))
+        {
             //enquanto a animação do tiro estiver processando
-            if (!estahAtirando) { 
-                estahAtirando=true;
+            if (!estahAtirando && municao > 0)
+            {
+                somTiro.clip = clips[0];
+                municao--;
+                estahAtirando = true;
                 StartCoroutine(Atirando());
             }
+            else {
+                if (!estahAtirando && municao == 0 && carregador > 0)
+                {
+                    Recarregar();
+                }
+                else {
+                    somTiro.clip = clips[2];
+                    somTiro.time = 0;
+                    somTiro.Play();
+                }
+            }
 
+        }
+        else {
+            if (Input.GetButtonDown("Recarregar"))
+            {
+                if (carregador > 0 && municao < 17) {
+                    Recarregar();
+                }
+                else
+                {
+                    somTiro.clip = clips[2];
+                    somTiro.time = 0;
+                    somTiro.Play();
+                }
+
+            }
         }
     }
 
@@ -39,6 +75,7 @@ public class Glock : MonoBehaviour
         //definir um ponto até o centro da tela
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(screenX, screenY));
         anim.Play("AtirarGlock");
+        somTiro.time = 0;
         somTiro.Play();
         GameObject efeitoTiroObj = Instantiate(efeitoTiro, posEfeitoTiro.transform.position, posEfeitoTiro.transform.rotation);
         efeitoTiroObj.transform.parent = posEfeitoTiro.transform;
@@ -56,5 +93,15 @@ public class Glock : MonoBehaviour
         Destroy(efeitoTiroObj);
         Destroy(faiscaObj);
         estahAtirando = false;
+    }
+
+    private void Recarregar() {
+        somTiro.clip = clips[1];
+        somTiro.time = 1.05f;
+        somTiro.Play();
+
+        anim.Play("RecarregarGlock");
+        municao = 17;
+        carregador--;
     }
 }
