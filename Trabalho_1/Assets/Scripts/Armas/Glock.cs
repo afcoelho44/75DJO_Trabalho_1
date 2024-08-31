@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Glock : MonoBehaviour
 {
+    public Text textoMunicao;
     private Animator anim;
     private bool estahAtirando;
     private RaycastHit hit;
@@ -19,6 +21,7 @@ public class Glock : MonoBehaviour
         estahAtirando = false;
         anim = GetComponent<Animator>();
         somTiro = GetComponent<AudioSource>();
+        AtualizarTextoMunicao();
     }
 
     // Update is called once per frame
@@ -48,7 +51,7 @@ public class Glock : MonoBehaviour
                     somTiro.Play();
                 }
             }
-
+            AtualizarTextoMunicao();
         }
         else {
             if (Input.GetButtonDown("Recarregar"))
@@ -103,5 +106,13 @@ public class Glock : MonoBehaviour
         anim.Play("RecarregarGlock");
         municao = 17;
         carregador--;
+    }
+    private void AtualizarTextoMunicao()
+    {
+            textoMunicao.text = municao.ToString() + "/"+ carregador.ToString();
+    }
+    public void AddCarregador() { 
+        carregador++;
+        AtualizarTextoMunicao();
     }
 }

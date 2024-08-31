@@ -14,6 +14,9 @@ public class AcoesObjeto : MonoBehaviour
     }
 
     private void Pegar() {
+        IPegavel obj = idObjetos.GetObjPegar().GetComponent<IPegavel>();
+        obj.Pegar();
+
         Destroy(idObjetos.GetObjPegar());
         idObjetos.EsconderTexto();
     }
