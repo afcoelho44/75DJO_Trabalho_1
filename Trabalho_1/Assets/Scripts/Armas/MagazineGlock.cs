@@ -6,7 +6,6 @@ public class MagazineGlock : MonoBehaviour, IPegavel
 {
     public void Pegar() { 
         Glock g = GameObject.FindWithTag("Arma").GetComponent<Glock>();
-        print(g);
         g.AddCarregador();
     }
     // Start is called before the first frame update

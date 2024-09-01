@@ -16,6 +16,7 @@ public class Glock : MonoBehaviour
     private int carregador = 3;
     private int municao = 17;
     public AudioClip[] clips;
+    public GameObject imgCursor;
     void Start()
     {
         estahAtirando = false;
@@ -52,6 +53,18 @@ public class Glock : MonoBehaviour
                 }
             }
             AtualizarTextoMunicao();
+
+            if (Input.GetButton("Fire2"))
+            {
+                anim.SetBool("mirar", true);
+                imgCursor.SetActive(false);
+                Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 45, Time.deltaTime * 10);
+            }
+            else {
+                anim.SetBool("mirar", false);
+                imgCursor.SetActive(true);
+                Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, Time.deltaTime * 10);
+            }
         }
         else {
             if (Input.GetButtonDown("Recarregar"))
