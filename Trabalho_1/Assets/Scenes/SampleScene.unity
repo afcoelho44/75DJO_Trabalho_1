@@ -16066,11 +16066,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: e102eedcf6ecfa6428dc8f1e7e605c2b, type: 3}
       propertyPath: m_Name
-      value: glock
+      value: Municao
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: e102eedcf6ecfa6428dc8f1e7e605c2b, type: 3}
       propertyPath: m_TagString
-      value: Arma
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: e102eedcf6ecfa6428dc8f1e7e605c2b, type: 3}
       propertyPath: m_TagString
