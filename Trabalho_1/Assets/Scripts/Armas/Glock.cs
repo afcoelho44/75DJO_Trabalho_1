@@ -124,7 +124,10 @@ public class Glock : MonoBehaviour
     {
             textoMunicao.text = municao.ToString() + "/"+ carregador.ToString();
     }
-    public void AddCarregador() { 
+    public void AddCarregador() {
+        somTiro.clip = clips[3];
+        somTiro.time = 0;
+        somTiro.Play();
         carregador++;
         AtualizarTextoMunicao();
     }
