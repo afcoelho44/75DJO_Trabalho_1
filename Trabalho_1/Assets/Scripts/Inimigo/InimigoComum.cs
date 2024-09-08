@@ -69,6 +69,9 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     }
     public void LevarDano(int dano) {
         vida -= dano;
+        agente.isStopped = false;
+        anim.SetTrigger("levouTiro");
+        anim.SetBool("podeAndar", false);
     }
 
     private void Morreu() {
@@ -83,5 +86,8 @@ public class InimigoComum : MonoBehaviour, ILevarDano
 
         this.enabled = false; //para de executar esse script
 
+    }
+    public void DarDano() {
+        player.GetComponent<MovimentarPersonagem>().AtualizarVida(-10);
     }
 }

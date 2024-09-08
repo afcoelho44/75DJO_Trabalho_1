@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MovimentarPersonagem : MonoBehaviour
 {
@@ -25,8 +26,16 @@ public class MovimentarPersonagem : MonoBehaviour
     private Transform cameraTransform;
     private bool estahAbaixado = false;
     private bool levantarBloqueado;
-    public float alturaLevantado, alturaAbaixado, posicaoCameraEmPe, posicaoCameraAbaixado; 
+    public float alturaLevantado, alturaAbaixado, posicaoCameraEmPe, posicaoCameraAbaixado;
 
+    private int vida = 100;
+    public Slider sliderVida;
+
+    public void AtualizarVida(int novaVida) {
+        vida = Mathf.CeilToInt(Mathf.Clamp(vida + novaVida, 0, 100));
+
+        sliderVida.value = vida;
+    }
     // Start is called before the first frame update
     void Start()
     {
