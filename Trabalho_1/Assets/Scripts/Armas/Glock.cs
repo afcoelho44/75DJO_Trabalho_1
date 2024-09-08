@@ -106,8 +106,9 @@ public class Glock : MonoBehaviour
                 hit.rigidbody.AddForceAtPosition(direcaoBala * 500, hit.point);
             }
             else {
-                
+                //Debug.Log(hit.transform.tag);
                 if (hit.transform.tag == "LevarDano") {
+                   // Debug.Log("Entrou!!!");
                     ILevarDano levarDano = hit.transform.GetComponent<ILevarDano>();
                     levarDano.LevarDano(5);
                 }
