@@ -10,14 +10,16 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     private Animator anim;
     public float distanciaDoAtaque = 2.0f;
     public int vida = 50;
-    public AudioSource audio;
-    public AudioClip[] clips;
+    public AudioSource audioSrc;
+    public AudioClip somMorte;
+    public AudioClip somPasso;
     // Start is called before the first frame update
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
+        audioSrc = GetComponent<AudioSource>();
     }
     private void CorrigirRigiEntrar() { 
         GetComponent<Rigidbody>().isKinematic = true;
@@ -75,8 +77,8 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     }
 
     private void Morreu() {
-        audio.clip = clips[0];
-        audio.Play();
+        audioSrc.clip = somMorte;
+        audioSrc.Play();
 
         agente.isStopped = true;
         anim.SetBool("podeAndar", false);
@@ -89,5 +91,9 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     }
     public void DarDano() {
         player.GetComponent<MovimentarPersonagem>().AtualizarVida(-10);
+    }
+    public void Passo() {
+        //ideal para sons repetitivos
+        audioSrc.PlayOneShot(somPasso, 0.5f);
     }
 }
