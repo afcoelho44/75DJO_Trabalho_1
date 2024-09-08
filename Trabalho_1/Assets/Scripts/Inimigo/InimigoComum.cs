@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class InimigoComum : MonoBehaviour
+public class InimigoComum : MonoBehaviour, ILevarDano
 {
     private NavMeshAgent agente;
     private GameObject player;
     private Animator anim;
     public float distanciaDoAtaque = 2.0f;
+    public int vida = 50;
+    public AudioSource audio;
+    public AudioClip[] clips;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +32,7 @@ public class InimigoComum : MonoBehaviour
         if (distanciaDoPlayer < distanciaDoAtaque)
         {
             agente.isStopped = true;
-            Debug.Log("Ataque");
+           // Debug.Log("Ataque");
 
             anim.SetTrigger("ataque");
             anim.SetBool("podeAndar", false);
@@ -58,5 +61,27 @@ public class InimigoComum : MonoBehaviour
     void Update()
     {
         VaiAtrasJoagdor();
+        OlharParaJogador();
+
+        if (vida <= 0) {
+            Morreu();
+        }
+    }
+    public void LevarDano(int dano) {
+        vida -= dano;
+    }
+
+    private void Morreu() {
+        audio.clip = clips[0];
+        audio.Play();
+
+        agente.isStopped = true;
+        anim.SetBool("podeAndar", false);
+        anim.SetBool("pararAtaque", true);
+
+        anim.SetBool("morreu", true);
+
+        this.enabled = false; //para de executar esse script
+
     }
 }

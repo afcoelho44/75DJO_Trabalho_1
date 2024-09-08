@@ -304,6 +304,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: InimigoComum (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e139d88b08fd8a74aa68c0899a1a6a70, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e139d88b08fd8a74aa68c0899a1a6a70, type: 3}
+      propertyPath: m_TagString
+      value: 'LevarDano '
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: e139d88b08fd8a74aa68c0899a1a6a70, type: 3}
       propertyPath: m_Controller
       value: 
@@ -347,6 +355,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanciaDoAtaque: 2
+  vida: 50
+  audio: {fileID: 0}
+  clips:
+  - {fileID: 8300000, guid: 13079c786fd88a243bd937af3bd06dc7, type: 3}
 --- !u!195 &81055828
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14384,6 +14396,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: InimigoComum (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e139d88b08fd8a74aa68c0899a1a6a70, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e139d88b08fd8a74aa68c0899a1a6a70, type: 3}
+      propertyPath: m_TagString
+      value: 'LevarDano '
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: e139d88b08fd8a74aa68c0899a1a6a70, type: 3}
       propertyPath: m_Controller
       value: 
@@ -14427,6 +14447,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanciaDoAtaque: 2
+  vida: 50
+  audio: {fileID: 0}
+  clips:
+  - {fileID: 8300000, guid: 13079c786fd88a243bd937af3bd06dc7, type: 3}
 --- !u!195 &319561863
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14595,6 +14619,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e139d88b08fd8a74aa68c0899a1a6a70, type: 3}
       propertyPath: m_Name
       value: InimigoComum
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e139d88b08fd8a74aa68c0899a1a6a70, type: 3}
+      propertyPath: m_TagString
+      value: 'LevarDano '
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: e139d88b08fd8a74aa68c0899a1a6a70, type: 3}
       propertyPath: m_Controller
@@ -18094,6 +18122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanciaDoAtaque: 2
+  vida: 50
+  audio: {fileID: 0}
+  clips:
+  - {fileID: 8300000, guid: 13079c786fd88a243bd937af3bd06dc7, type: 3}
 --- !u!195 &1736804349
 NavMeshAgent:
   m_ObjectHideFlags: 0

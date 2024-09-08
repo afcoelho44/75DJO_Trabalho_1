@@ -100,9 +100,17 @@ public class Glock : MonoBehaviour
         if (Physics.SphereCast(ray, 0.1f, out hit)) {
             //print(hit.transform.name);
             faiscaObj = Instantiate(faisca, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-            if (hit.transform.tag == "Arrastar") {
+            if (hit.transform.tag == "Arrastar")
+            {
                 Vector3 direcaoBala = ray.direction;
                 hit.rigidbody.AddForceAtPosition(direcaoBala * 500, hit.point);
+            }
+            else {
+                
+                if (hit.transform.tag == "LevarDano") {
+                    ILevarDano levarDano = hit.transform.GetComponent<ILevarDano>();
+                    levarDano.LevarDano(5);
+                }
             }
         }
         yield return new WaitForSeconds(0.3f);

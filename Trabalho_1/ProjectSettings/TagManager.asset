@@ -7,6 +7,7 @@ TagManager:
   - Arrastar
   - Pegar
   - Arma
+  - 'LevarDano '
   layers:
   - Default
   - TransparentFX
