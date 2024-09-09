@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MovimentarPersonagem : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class MovimentarPersonagem : MonoBehaviour
     private int vida = 100;
     public Slider sliderVida;
 
+    public GameObject telaFimJogo;
+    public bool estahVivo = true;
+
     public void AtualizarVida(int novaVida) {
         vida = Mathf.CeilToInt(Mathf.Clamp(vida + novaVida, 0, 100));
 
@@ -52,6 +56,12 @@ public class MovimentarPersonagem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!estahVivo)
+            return;
+        if (vida <= 0) {
+            FimDeJogo();
+            return;
+        }
         //cria uma esfera de raioEsfera na posição do checaChao, batendo com as mascara do chao 
         // se esta em contato com chaoMask, entao retorna true
         // Aqui ele anda
@@ -109,5 +119,28 @@ public class MovimentarPersonagem : MonoBehaviour
         // UnityEngine.Debug.DrawRay(cameraTransform.position, Vector3.up * 1.1f, Color.red);
         RaycastHit hit;
         levantarBloqueado = Physics.Raycast(cameraTransform.position, Vector3.up, out hit, 1.1f);
+    }
+
+    private void FimDeJogo()
+    {
+        //desativar varios componentes
+        Time.timeScale = 0; //vai de 0 a 1... 1 eh velocidade normal 0 eh parado
+                            // entre 0 e 1 eh possível configurar camera lentaCamera
+        Camera.main.GetComponent<AudioListener>().enabled = false;
+
+        GetComponentInChildren<Glock>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        telaFimJogo.SetActive(true);
+
+        estahVivo = false;
+    }
+    public void ReiniciarJogo() {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+    public void SairJogo() { 
+        Application.Quit();
     }
 }
