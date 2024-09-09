@@ -18913,7 +18913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3703eee7e8f7e94458def58c014691ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanciaVisao: 10
+  distanciaVisao: 0
   anguloVisao: 35
   podeVerPlayer: 0
 --- !u!1001 &1749129003
