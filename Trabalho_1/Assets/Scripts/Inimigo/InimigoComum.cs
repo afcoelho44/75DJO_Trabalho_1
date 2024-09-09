@@ -14,6 +14,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     public AudioClip somMorte;
     public AudioClip somPasso;
     public FieldOfView fov;
+    private PatrulharAleatorio pal;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         anim = GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
         fov = GetComponent<FieldOfView>();
+        pal = GetComponent<PatrulharAleatorio>();
 
     }
     private void CorrigirRigiEntrar() { 
@@ -80,6 +82,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
             anim.SetBool("pararAtaque", true);
             CorrigirRigiSair();
             agente.isStopped = false;
+            pal.Andar();
         }
     }
     public void LevarDano(int dano) {
