@@ -444,6 +444,7 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   somMorte: {fileID: 0}
   somPasso: {fileID: 0}
+  fov: {fileID: 0}
 --- !u!195 &81055828
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14672,6 +14673,7 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   somMorte: {fileID: 0}
   somPasso: {fileID: 0}
+  fov: {fileID: 0}
 --- !u!195 &319561863
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -18727,6 +18729,7 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   somMorte: {fileID: 8300000, guid: 13079c786fd88a243bd937af3bd06dc7, type: 3}
   somPasso: {fileID: 8300000, guid: ad049aeaabf8a67408486bd7ed0c8794, type: 3}
+  fov: {fileID: 0}
 --- !u!195 &1736804349
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -18913,7 +18916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3703eee7e8f7e94458def58c014691ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanciaVisao: 0
+  distanciaVisao: 10
   anguloVisao: 35
   podeVerPlayer: 0
 --- !u!1001 &1749129003

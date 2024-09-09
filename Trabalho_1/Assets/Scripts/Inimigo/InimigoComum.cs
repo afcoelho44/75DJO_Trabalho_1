@@ -13,6 +13,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     public AudioSource audioSrc;
     public AudioClip somMorte;
     public AudioClip somPasso;
+    public FieldOfView fov;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,8 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
+        fov = GetComponent<FieldOfView>();
+
     }
     private void CorrigirRigiEntrar() { 
         GetComponent<Rigidbody>().isKinematic = true;
@@ -67,11 +70,21 @@ public class InimigoComum : MonoBehaviour, ILevarDano
 
         if (vida <= 0) {
             Morreu();
+            return;
+        }
+        if (fov.podeVerPlayer)
+        {
+            VaiAtrasJoagdor();
+        }
+        else {
+            anim.SetBool("pararAtaque", true);
+            CorrigirRigiSair();
+            agente.isStopped = false;
         }
     }
     public void LevarDano(int dano) {
         vida -= dano;
-        agente.isStopped = false;
+        agente.isStopped = true;
         anim.SetTrigger("levouTiro");
         anim.SetBool("podeAndar", false);
     }
