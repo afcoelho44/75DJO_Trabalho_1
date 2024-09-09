@@ -62,8 +62,8 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     // Update is called once per frame
     void Update()
     {
-        VaiAtrasJoagdor();
-        OlharParaJogador();
+       // VaiAtrasJoagdor();
+        //OlharParaJogador();
 
         if (vida <= 0) {
             Morreu();
