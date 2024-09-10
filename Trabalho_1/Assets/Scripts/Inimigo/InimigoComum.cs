@@ -15,6 +15,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     public AudioClip somPasso;
     public FieldOfView fov;
     private PatrulharAleatorio pal;
+    public GameObject inimigo;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +73,8 @@ public class InimigoComum : MonoBehaviour, ILevarDano
 
         if (vida <= 0) {
             Morreu();
+            //float duracao = anim.GetCurrentAnimatorStateInfo(0).length;
+            //Destroy(inimigo, duracao);
             return;
         }
         if (fov.podeVerPlayer)
@@ -102,8 +105,10 @@ public class InimigoComum : MonoBehaviour, ILevarDano
 
         anim.SetBool("morreu", true);
 
+        StartCoroutine(EsperarFimDaAnimacao());
         this.enabled = false; //para de executar esse script
-
+        fov.enabled = false;
+        
     }
     public void DarDano() {
         player.GetComponent<MovimentarPersonagem>().AtualizarVida(-10);
@@ -112,4 +117,23 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         //ideal para sons repetitivos
         audioSrc.PlayOneShot(somPasso, 0.5f);
     }
+    private void DestruirInimigo() {
+        Destroy(inimigo);
+    }
+    private IEnumerator EsperarFimDaAnimacao()
+    {
+        // Obtém o estado atual da animação
+        AnimatorStateInfo estadoAnimacao = anim.GetCurrentAnimatorStateInfo(0);
+
+        // Espera até que o estado atual seja o da animação de morte e ela tenha terminado
+        while (!estadoAnimacao.IsName("Morrendo") || estadoAnimacao.normalizedTime < 1.0f)
+        {
+            estadoAnimacao = anim.GetCurrentAnimatorStateInfo(0);
+            yield return null; // Espera o próximo frame
+        }
+
+        // Depois que a animação termina, destrói o inimigo
+        DestruirInimigo();
+    }
+
 }

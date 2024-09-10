@@ -56,12 +56,12 @@ public class MovimentarPersonagem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!estahVivo)
-            return;
-        if (vida <= 0) {
-            FimDeJogo();
-            return;
-        }
+        //if (!estahVivo)
+        //    return;
+        //if (vida <= 0) {
+        //    FimDeJogo();
+        //    return;
+        //}
         //cria uma esfera de raioEsfera na posição do checaChao, batendo com as mascara do chao 
         // se esta em contato com chaoMask, entao retorna true
         // Aqui ele anda
@@ -124,23 +124,24 @@ public class MovimentarPersonagem : MonoBehaviour
     private void FimDeJogo()
     {
         //desativar varios componentes
-        Time.timeScale = 0; //vai de 0 a 1... 1 eh velocidade normal 0 eh parado
+        //Time.timeScale = 0; //vai de 0 a 1... 1 eh velocidade normal 0 eh parado
                             // entre 0 e 1 eh possível configurar camera lentaCamera
-        Camera.main.GetComponent<AudioListener>().enabled = false;
+        //Camera.main.GetComponent<AudioListener>().enabled = false;
 
-        GetComponentInChildren<Glock>().enabled = false;
+        //GetComponentInChildren<Glock>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
-        telaFimJogo.SetActive(true);
-
-        estahVivo = false;
-    }
-    public void ReiniciarJogo() {
-        Time.timeScale = 1;
         SceneManager.LoadScene(0);
+
+        //telaFimJogo.SetActive(true);
+
+        //estahVivo = false;
     }
-    public void SairJogo() { 
-        Application.Quit();
-    }
+    //public void ReiniciarJogo() {
+    //    Time.timeScale = 1;
+    //   
+    //}
+    //public void SairJogo() { 
+    //    Application.Quit();
+    //}
 }
