@@ -14213,6 +14213,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: e102eedcf6ecfa6428dc8f1e7e605c2b, type: 3}
   m_PrefabInstance: {fileID: 1560975346}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &306060074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+  m_PrefabInstance: {fileID: 844727810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &306060075
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306060074}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45aed0d3003d067479ef1f757d749e7e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &308009879
 GameObject:
   m_ObjectHideFlags: 0
@@ -16551,6 +16578,82 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!1001 &844727810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 47.922825
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.37412307
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 24.321547
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      propertyPath: m_Name
+      value: PUMPING HEART MODEL
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 306060075}
+  m_SourcePrefab: {fileID: 100100000, guid: 7a867f561e130a741bb9524d13a11b07, type: 3}
 --- !u!1 &865577262
 GameObject:
   m_ObjectHideFlags: 0
@@ -19463,6 +19566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf
       objectReference: {fileID: 0}
+    - target: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 477254, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -20458,3 +20565,4 @@ SceneRoots:
   - {fileID: 122337844}
   - {fileID: 1829557033}
   - {fileID: 1806709641}
+  - {fileID: 844727810}
