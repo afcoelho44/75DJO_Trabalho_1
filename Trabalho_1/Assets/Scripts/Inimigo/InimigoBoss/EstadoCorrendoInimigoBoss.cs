@@ -8,7 +8,24 @@ public class EstadoCorrendoInimigoBoss : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("podeAndar", true);
+
+        // Adiciona uma chance de grunhir ao entrar no estado
+        // Você pode ajustar essa lógica conforme a necessidade (por exemplo, tocar em cada entrada ou aleatoriamente)
+        Grunhir(animator);
     }
+    // Função para acionar a animação de grunhido
+    private void Grunhir(Animator animator)
+    {
+        // Define uma chance para o grunhido ou grunhido garantido dependendo da lógica do jogo
+        // Por exemplo, uma chance de 30% para grunhir quando começa a correr
+        float chanceDeGrunhir = 0.3f;
+        if (Random.value <= chanceDeGrunhir)
+        {
+            animator.SetTrigger("grunhir");
+            animator.SetBool("podeAndar", false);
+        }
+    }
+
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

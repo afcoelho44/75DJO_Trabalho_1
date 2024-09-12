@@ -9,14 +9,20 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
     private GameObject player;
     private Animator anim;
     public float distanciaDoAtaque = 2.0f;
-    public int vida = 50;
+    public int vida = 100;
     public GameObject inimigo;
+    public AudioClip somMorte;
+    public AudioClip somPasso;
+    public AudioClip somGrunir;
+    private AudioSource audioSrc;
+
 
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
+        audioSrc = GetComponent<AudioSource>();
     }
 
     private void VaiAtrasJogador() {
@@ -60,7 +66,9 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
         anim.SetTrigger("levouTiro");
         anim.SetBool("podeAndar", false);
     }
-    private void Morrer() { 
+    private void Morrer() {
+        audioSrc.clip = somMorte;
+        audioSrc.Play();
         agente.isStopped = true;
         anim.SetBool("podeAndar", false);
         anim.SetBool("pararAtaque", true);
@@ -92,7 +100,7 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
     }
 
     public void DarDano() {
-        player.GetComponent<MovimentarPersonagem>().AtualizarVida(-10);
+        player.GetComponent<MovimentarPersonagem>().AtualizarVida(-20);
     }
     void Update()
     {
@@ -102,5 +110,12 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
         if (vida <= 0) {
             Morrer();
         }
+    }
+    public void Passo() {
+        audioSrc.PlayOneShot(somPasso, 0.05f);
+    }
+    public void Grunhir()
+    {
+        audioSrc.PlayOneShot(somGrunir);
     }
 }
