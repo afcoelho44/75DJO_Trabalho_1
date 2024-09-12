@@ -17746,6 +17746,7 @@ MonoBehaviour:
   gravidade: -20
   somPulo: {fileID: 8300000, guid: e42350d73b5084848930a94b1c72d57c, type: 3}
   somBeep: {fileID: 8300000, guid: 3ae53f2c3952b8244b209b10d1951adc, type: 3}
+  somPassos: {fileID: 8300000, guid: 7b1dbb03a6ea8f64e81f7eadccbcb8f8, type: 3}
   checaChao: {fileID: 1265393965}
   raioEsfera: 0.4
   chaoMask:
@@ -17842,7 +17843,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

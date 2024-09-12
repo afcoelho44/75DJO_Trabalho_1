@@ -16,6 +16,8 @@ public class MovimentarPersonagem : MonoBehaviour
     public float gravidade = -20f;
     public AudioClip somPulo;
     public AudioClip somBeep;
+    public AudioClip somPassos;
+    private bool andando = false;
     private AudioSource audioSrc;
 
     public Transform checaChao;
@@ -83,6 +85,22 @@ public class MovimentarPersonagem : MonoBehaviour
 
         controle.Move(mover * velocidade *  Time.deltaTime);
 
+        // Tocar som de passos
+        if (estaNoChao && mover.magnitude > 0 && !andando)
+        {
+            andando = true;
+            audioSrc.clip = somPassos;
+            audioSrc.loop = true; // Repetir o som enquanto estiver andando
+
+            audioSrc.pitch = 1.0f + (mover.magnitude * 2.0f);
+            audioSrc.Play();
+        }
+        else if (mover.magnitude == 0 || !estaNoChao)
+        {
+            andando = false;
+            audioSrc.Stop(); // Parar o som se o personagem parar ou sair do chão
+        }
+
         ChecarBloqueioAbaixado();
 
         //Aqui ele pula 
@@ -91,6 +109,7 @@ public class MovimentarPersonagem : MonoBehaviour
 
             velocidadeCai.y = Mathf.Sqrt(alturaPulo * -2f * gravidade);
             audioSrc.clip = somPulo;
+            audioSrc.loop = false;
             audioSrc.Play();
         }
 
