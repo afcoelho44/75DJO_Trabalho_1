@@ -15,6 +15,8 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
     public AudioClip somPasso;
     public AudioClip somGrunir;
     private AudioSource audioSrc;
+    private FieldOfView fov;
+    private PatrulharAleatorio pal;
 
 
     void Start()
@@ -23,6 +25,8 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
+        fov = GetComponent<FieldOfView>();
+        pal= GetComponent<PatrulharAleatorio>();
     }
 
     private void VaiAtrasJogador() {
@@ -31,7 +35,7 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
         if (distanciaDoPlayer < distanciaDoAtaque)
         {
             agente.isStopped = true;
-            Debug.Log("Ataque");
+           // Debug.Log("Ataque");
 
             anim.SetTrigger("ataque");
             anim.SetBool("podeAndar", false);
@@ -104,11 +108,23 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
     }
     void Update()
     {
-        VaiAtrasJogador();
-        OlharParaJogador();
+        //VaiAtrasJogador();
+        //OlharParaJogador();
 
         if (vida <= 0) {
             Morrer();
+            return;
+        }
+        if (fov.podeVerPlayer)
+        {
+            VaiAtrasJogador();
+        }
+        else {
+            anim.SetBool("pararAtaque",true);
+            CorrigirRigiSair();
+            agente.isStopped = false;
+            pal.Andar();
+
         }
     }
     public void Passo() {
