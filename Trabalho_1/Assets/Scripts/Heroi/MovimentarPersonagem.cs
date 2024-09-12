@@ -15,6 +15,7 @@ public class MovimentarPersonagem : MonoBehaviour
     public float alturaPulo = 6f;
     public float gravidade = -20f;
     public AudioClip somPulo;
+    public AudioClip somBeep;
     private AudioSource audioSrc;
 
     public Transform checaChao;
@@ -36,6 +37,13 @@ public class MovimentarPersonagem : MonoBehaviour
     public bool estahVivo = true;
 
     public void AtualizarVida(int novaVida) {
+
+        if (novaVida > 0) {
+            audioSrc.clip = somBeep;
+            audioSrc.time = 0;
+            audioSrc.Play();
+        }
+
         vida = Mathf.CeilToInt(Mathf.Clamp(vida + novaVida, 0, 100));
 
         sliderVida.value = vida;
