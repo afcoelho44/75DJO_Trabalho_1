@@ -8,6 +8,7 @@ TagManager:
   - Pegar
   - Arma
   - 'LevarDano '
+  - Mascote
   layers:
   - Default
   - TransparentFX
