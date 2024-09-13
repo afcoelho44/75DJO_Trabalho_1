@@ -10,7 +10,7 @@ public class Companheiro : MonoBehaviour
     private Animator anim;
     public float distanciaSeguir = 10.0f; // Distância a partir da qual o animal começa a seguir o jogador
     public float distanciaParar = 2.0f;   // Distância mínima ao jogador para parar de se mover
-    public float offsetSeguir = 100.0f;     // Distância para ficar atrás ou ao lado do jogador
+    public float offsetSeguir = 1.5f;     // Distância para ficar atrás ou ao lado do jogador
     public float alcanceAtaque = 1.5f;    // Alcance para o companheiro atacar
     public int danoAtaque = 10;           // Dano causado pelo ataque
 
@@ -38,9 +38,11 @@ public class Companheiro : MonoBehaviour
         if (distanciaDoPlayer < distanciaSeguir && distanciaDoPlayer > distanciaParar)
         {
             agente.isStopped = false;
+
             // Calcula uma posição offset atrás do jogador usando a direção oposta à frente do jogador
             Vector3 direcaoParaTras = -player.transform.forward * offsetSeguir;
             Vector3 posicaoDestino = player.transform.position + direcaoParaTras;
+            anim.SetBool("parado", false);
             anim.SetBool("podeAndar", true);
 
             agente.SetDestination(posicaoDestino);
@@ -55,6 +57,7 @@ public class Companheiro : MonoBehaviour
         else
         {
             agente.isStopped = true;
+            anim.SetBool("parado", true);
             anim.SetBool("podeAndar", false);
             
         }
@@ -62,36 +65,58 @@ public class Companheiro : MonoBehaviour
 
     private void VerificarAtaque()
     {
-        // Supondo que você define o alvo manualmente ou com alguma lógica de detecção
-        GameObject inimigo = GameObject.FindWithTag("LevarDano ");
-        if (inimigo != null)
-        {
-            float distanciaDoAlvo = Vector3.Distance(transform.position, inimigo.transform.position);
+        GameObject inimigo = EncontrarInimigoMaisProximo();
 
-            if (distanciaDoAlvo <= alcanceAtaque)
+        if (inimigo != null) {
+            float distanciaInimigo = Vector3.Distance(transform.position, inimigo.transform.position);
+
+            if (distanciaInimigo <= alcanceAtaque)
             {
                 Atacar(inimigo);
             }
-            //Inimigo se afastou
-            if (distanciaDoAlvo >= alcanceAtaque + 1) {
+            else if (distanciaInimigo >= alcanceAtaque + 1) {
                 anim.SetBool("pararAtaque", true);
             }
         }
     }
 
+    private GameObject EncontrarInimigoMaisProximo() {
+        GameObject[] inimigos = GameObject.FindGameObjectsWithTag("LevarDano ");
+        GameObject inimigoMaisProx = null;
+
+        float menorDistancia = Mathf.Infinity;
+
+        foreach (GameObject inimigo in inimigos) {
+            float distanciaPlayer = Vector3.Distance(player.transform.position, inimigo.transform.position);
+
+            if (distanciaPlayer < menorDistancia) { 
+                menorDistancia = distanciaPlayer;
+                inimigoMaisProx = inimigo;
+            }
+        }
+        return inimigoMaisProx;
+    }
     private void Atacar(GameObject inimigo)
     {
         agente.isStopped = true;
         anim.SetTrigger("ataque");
         anim.SetBool("podeAndar", false);
         anim.SetBool("pararAtaque", false);
-        
+        anim.SetBool("parado", false);
+        CorrigirRigiEntrar();
+        Debug.Log("Atacando inimigo: " + inimigo.name); // Log para confirmar o ataque
+
         // Lógica de dano ao alvo, assumindo que o alvo tem um método para levar dano
         ILevarDano componenteDano = inimigo.GetComponent<ILevarDano>();
         if (componenteDano != null)
         {
             componenteDano.LevarDano(danoAtaque);
         }
+        else
+        {
+            Debug.LogWarning("O inimigo não implementa ILevarDano!");
+        }
+        anim.ResetTrigger("ataque");
     }
     private void CorrigirRigiEntrar() { 
         GetComponent<Rigidbody>().isKinematic = true;
