@@ -44,7 +44,7 @@ public class MovimentarPersonagem : MonoBehaviour
     public Button restart;
     public Button menu;
     public Button exit;
-
+    public Text textScore;
     public void AtualizarVida(int novaVida) {
 
         if (novaVida > 0) {
@@ -59,7 +59,7 @@ public class MovimentarPersonagem : MonoBehaviour
     }
     public void AtualizarScore(int ponto) {
         score += ponto;
-        //subTitulo.text = score.ToString() + " pts" ;
+        textScore.text = "Score: "+ score.ToString() + " pts" ;
     }
     // Start is called before the first frame update
     void Start()
@@ -68,6 +68,7 @@ public class MovimentarPersonagem : MonoBehaviour
         controle = GetComponent<CharacterController>();
         cameraTransform= Camera.main.transform;
         audioSrc = GetComponent<AudioSource>();
+        AtualizarScore(0);
     }
     void OnDrawGizmosSelected() { 
         Gizmos.color = Color.yellow;
@@ -169,13 +170,13 @@ public class MovimentarPersonagem : MonoBehaviour
         GetComponentInChildren<Glock>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        subTitulo.text = "Score: "+score.ToString() + " pts";
         //SceneManager.LoadScene(0);
 
-        
+
         if (vida <= 0) {
             telaFimJogo.GetComponent<Image>().sprite = novoBackground;
             titulo.text = "Você morreu...";
-            subTitulo.text = score.ToString() + " pts";
             Color corBotoes;
 
             if (ColorUtility.TryParseHtmlString("#D7000C", out corBotoes)) {

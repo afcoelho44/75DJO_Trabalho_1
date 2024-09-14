@@ -80,6 +80,7 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
         anim.SetBool("morreu", true);
 
         StartCoroutine(EsperarFimDaAnimacao());
+        player.GetComponent<MovimentarPersonagem>().AtualizarScore(30);
         this.enabled = false;
       
     }

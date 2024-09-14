@@ -106,6 +106,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         anim.SetBool("morreu", true);
 
         StartCoroutine(EsperarFimDaAnimacao());
+        player.GetComponent<MovimentarPersonagem>().AtualizarScore(10);
         this.enabled = false; //para de executar esse script
         fov.enabled = false;
         
