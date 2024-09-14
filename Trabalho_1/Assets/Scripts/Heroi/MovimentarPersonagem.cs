@@ -37,6 +37,13 @@ public class MovimentarPersonagem : MonoBehaviour
 
     public GameObject telaFimJogo;
     public bool estahVivo = true;
+    private int score = 0;
+    public Text titulo;
+    public Text subTitulo;
+    public Sprite novoBackground;
+    public Button restart;
+    public Button menu;
+    public Button exit;
 
     public void AtualizarVida(int novaVida) {
 
@@ -49,6 +56,10 @@ public class MovimentarPersonagem : MonoBehaviour
         vida = Mathf.CeilToInt(Mathf.Clamp(vida + novaVida, 0, 100));
 
         sliderVida.value = vida;
+    }
+    public void AtualizarScore(int ponto) {
+        score += ponto;
+        //subTitulo.text = score.ToString() + " pts" ;
     }
     // Start is called before the first frame update
     void Start()
@@ -66,12 +77,12 @@ public class MovimentarPersonagem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!estahVivo)
-        //    return;
-        //if (vida <= 0) {
-        //    FimDeJogo();
-        //    return;
-        //}
+        if (!estahVivo)
+            return;
+        if (vida <= 0) {
+            FimDeJogo();
+            return;
+        }
         //cria uma esfera de raioEsfera na posição do checaChao, batendo com as mascara do chao 
         // se esta em contato com chaoMask, entao retorna true
         // Aqui ele anda
@@ -151,24 +162,52 @@ public class MovimentarPersonagem : MonoBehaviour
     private void FimDeJogo()
     {
         //desativar varios componentes
-        //Time.timeScale = 0; //vai de 0 a 1... 1 eh velocidade normal 0 eh parado
+        Time.timeScale = 0; //vai de 0 a 1... 1 eh velocidade normal 0 eh parado
                             // entre 0 e 1 eh possível configurar camera lentaCamera
         //Camera.main.GetComponent<AudioListener>().enabled = false;
-
-        //GetComponentInChildren<Glock>().enabled = false;
+        audioSrc.Stop();
+        GetComponentInChildren<Glock>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
 
-        //telaFimJogo.SetActive(true);
+        
+        if (vida <= 0) {
+            telaFimJogo.GetComponent<Image>().sprite = novoBackground;
+            titulo.text = "Você morreu...";
+            subTitulo.text = score.ToString() + " pts";
+            Color corBotoes;
 
-        //estahVivo = false;
+            if (ColorUtility.TryParseHtmlString("#D7000C", out corBotoes)) {
+                ColorBlock cbR = restart.colors;
+                cbR.normalColor = corBotoes;
+                restart.colors = cbR; 
+
+                ColorBlock cbM = menu.colors;
+                cbM.normalColor = corBotoes;
+                menu.colors = cbM; 
+
+                ColorBlock cbE = exit.colors;
+                cbE.normalColor = corBotoes;
+                exit.colors = cbE;
+
+            }
+
+            telaFimJogo.SetActive(true);
+
+        }
+        
+
+        estahVivo = false;
     }
-    //public void ReiniciarJogo() {
-    //    Time.timeScale = 1;
-    //   
-    //}
-    //public void SairJogo() { 
-    //    Application.Quit();
-    //}
+    public void ReiniciarJogo() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    }
+    public void SairJogo() { 
+        Application.Quit();
+    }
+    public void TelaMenu() { 
+        SceneManager.LoadScene(0);
+    }
 }
