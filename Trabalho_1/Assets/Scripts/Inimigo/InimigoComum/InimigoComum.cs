@@ -58,11 +58,11 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         }
     }
 
-    private void OlharParaJogador() { 
-        Vector3 direcaoOlhar = player.transform.position - transform.position;
-        Quaternion rotacao = Quaternion.LookRotation(direcaoOlhar);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotacao, Time.deltaTime * 300); //mesma funcionalidade do Lerp
-    }
+    //private void OlharParaJogador() { 
+    //    Vector3 direcaoOlhar = player.transform.position - transform.position;
+    //    Quaternion rotacao = Quaternion.LookRotation(direcaoOlhar);
+    //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotacao, Time.deltaTime * 300); //mesma funcionalidade do Lerp
+    //}
 
 
     // Update is called once per frame
