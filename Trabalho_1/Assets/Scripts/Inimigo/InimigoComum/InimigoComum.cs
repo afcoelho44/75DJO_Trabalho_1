@@ -35,7 +35,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         GetComponent<Rigidbody>().isKinematic = false;
     }
 
-    private void VaiAtrasJoagdor() {
+    private void VaiAtrasJogador() {
         float distanciaDoPlayer = Vector3.Distance(transform.position,player.transform.position );
         if (distanciaDoPlayer < distanciaDoAtaque)
         {
@@ -79,7 +79,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         }
         if (fov.podeVerPlayer)
         {
-            VaiAtrasJoagdor();
+            VaiAtrasJogador();
         }
         else {
             anim.SetBool("pararAtaque", true);

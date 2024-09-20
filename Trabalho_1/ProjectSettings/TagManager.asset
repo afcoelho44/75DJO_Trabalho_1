@@ -9,6 +9,8 @@ TagManager:
   - Arma
   - 'LevarDano '
   - Mascote
+  - InimigoBoss
+  - InimigoComum
   layers:
   - Default
   - TransparentFX

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Companheiro : MonoBehaviour
+public class Companheiro : MonoBehaviour, ILevarDano
 {
     private NavMeshAgent agente;
     private GameObject player;
@@ -15,6 +15,7 @@ public class Companheiro : MonoBehaviour
     public int danoAtaque = 3;           // Dano causado pelo ataque
     public CompanheiroFieldOfView fov;
     private Vector3 ultimaPosicaoPlayer;
+    public int vida = 30;
 
     //public AudioSource audioSrc;
     //public AudioClip somPasso;
@@ -124,5 +125,13 @@ public class Companheiro : MonoBehaviour
     private void CorrigirRigiSair()
     {
         GetComponent<Rigidbody>().isKinematic = false;
+    }
+
+    public void LevarDano(int dano)
+    {
+        vida-=dano;
+        agente.isStopped=true;
+        anim.SetTrigger("levouDano");
+        anim.SetBool("podeAndar", false);
     }
 }

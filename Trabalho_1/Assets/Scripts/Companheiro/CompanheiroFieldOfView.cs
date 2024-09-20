@@ -44,7 +44,7 @@ public class CompanheiroFieldOfView : MonoBehaviour
                 }
             }
 
-            if (alvo.gameObject.CompareTag("LevarDano "))
+            if (alvo.gameObject.CompareTag("InimigoComum"))
             {
                 if (EstaNoCampoDeVisao(alvo))
                 {

@@ -107,7 +107,7 @@ public class Glock : MonoBehaviour
             }
             else {
                // Debug.Log(hit.transform.tag + "**");
-                if (hit.transform.tag == "LevarDano ") {
+                if (hit.transform.tag == "InimigoComum" || hit.transform.tag == "InimigoBoss" || hit.transform.tag == "Mascote") {
                    // Debug.Log("Entrou!!!");
                     ILevarDano levarDano = hit.transform.GetComponent<ILevarDano>();
                     levarDano.LevarDano(5);
