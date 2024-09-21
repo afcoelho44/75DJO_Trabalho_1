@@ -9,7 +9,9 @@ public class CaixaDeVida : MonoBehaviour, IPegavel
     {
 
         MovimentarPersonagem player = GameObject.FindWithTag("Player").GetComponent<MovimentarPersonagem>();
+        Companheiro mascote = GameObject.FindWithTag("Mascote").GetComponent<Companheiro>();
         player.AtualizarVida(30);
+        mascote.AtualizarVida(10);
        
     }
     // Start is called before the first frame update

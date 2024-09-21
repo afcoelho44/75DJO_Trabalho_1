@@ -22270,6 +22270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PUMPING HEART MODEL
       objectReference: {fileID: 0}
+    - target: {fileID: 6846973725110632684, guid: 5b313353c48814e45a72110311aade93, type: 3}
+      propertyPath: m_TagString
+      value: CaixaDeVida
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

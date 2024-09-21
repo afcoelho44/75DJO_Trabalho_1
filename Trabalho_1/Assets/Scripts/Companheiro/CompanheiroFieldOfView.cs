@@ -10,9 +10,11 @@ public class CompanheiroFieldOfView : MonoBehaviour
 
     public bool podeVerPlayer;
     public bool podeVerInimigo;
+    public bool podeVerCaixa;
 
     private GameObject player;
     private GameObject inimigoMaisProximo;
+    private GameObject caixaDeVida;
 
     void Start()
     {
@@ -31,6 +33,7 @@ public class CompanheiroFieldOfView : MonoBehaviour
         Collider[] alvosDentroRaio = Physics.OverlapSphere(transform.position, distanciaVisao);
         bool encontrouPlayer = false;
         bool encontrouInimigo = false;
+        bool encontrouCaixa = false;
 
         foreach (Collider alvo in alvosDentroRaio)
         {
@@ -54,6 +57,16 @@ public class CompanheiroFieldOfView : MonoBehaviour
                     OlharPara(inimigoMaisProximo); // Olha para o inimigo mais próximo
                 }
             }
+            if (alvo.gameObject.CompareTag("CaixaDeVida"))
+            {
+                if (EstaNoCampoDeVisao(alvo))
+                {
+                    podeVerCaixa = true;
+                    caixaDeVida = alvo.gameObject;
+                    encontrouCaixa = true;
+                    OlharPara(caixaDeVida); // Olha para o inimigo mais próximo
+                }
+            }
         }
 
         // Atualiza as flags caso não tenha encontrado o player ou o inimigo
@@ -65,6 +78,11 @@ public class CompanheiroFieldOfView : MonoBehaviour
         {
             podeVerInimigo = false;
             inimigoMaisProximo = null;
+        }
+        if (!encontrouCaixa)
+        {
+            podeVerCaixa = false;
+            caixaDeVida = null;
         }
     }
 
@@ -88,6 +106,10 @@ public class CompanheiroFieldOfView : MonoBehaviour
     public GameObject getInimigo()
     {
         return inimigoMaisProximo;
+    }
+    public GameObject getCaixaDeVida()
+    {
+        return caixaDeVida;
     }
     private void FixedUpdate()
     {

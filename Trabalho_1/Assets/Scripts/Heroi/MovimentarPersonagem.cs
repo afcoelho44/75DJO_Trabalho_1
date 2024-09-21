@@ -32,7 +32,7 @@ public class MovimentarPersonagem : MonoBehaviour
     private bool levantarBloqueado;
     public float alturaLevantado, alturaAbaixado, posicaoCameraEmPe, posicaoCameraAbaixado;
 
-    private int vida = 100;
+    public int vida = 100;
     public Slider sliderVida;
 
     public GameObject telaFimJogo;

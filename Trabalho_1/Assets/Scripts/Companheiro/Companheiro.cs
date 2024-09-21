@@ -41,8 +41,11 @@ public class Companheiro : MonoBehaviour, ILevarDano
         if (vida<=0) {
             Morreu();
             return;
-        }
+        }else
 
+        if (fov.podeVerCaixa && player.GetComponent<MovimentarPersonagem>().vida < 100) {
+            PegarVida();
+        }else
         if (fov.podeVerInimigo)
         {
             SeguirInimigo();
@@ -206,5 +209,35 @@ public class Companheiro : MonoBehaviour, ILevarDano
         vida = Mathf.CeilToInt(Mathf.Clamp(vida + novaVida, 0, 100));
 
         sliderVida.value= vida; 
+    }
+    private void PegarVida() {
+        GameObject caixa = fov.getCaixaDeVida();  // Obtenha a caixa de vida visível no campo de visão
+
+        if (caixa != null)
+        {
+            float distanciaDaCaixa = Vector3.Distance(transform.position, caixa.transform.position);
+
+            // Se o companheiro estiver perto da caixa de vida, pega a caixa
+            if (distanciaDaCaixa < 1.0f)
+            {
+                caixa.GetComponent<CaixaDeVida>().Pegar();
+                Destroy(caixa);
+            }
+            else
+            {
+                // Caso contrário, continua se movendo até a caixa de vida
+                agente.isStopped = false;
+                agente.SetDestination(caixa.transform.position);
+                anim.SetBool("podeAndar", true);
+                CorrigirRigiEntrar();
+            }
+        }
+        else
+        {
+            anim.SetBool("parado", true);
+            anim.SetBool("podeAndar", false);
+            CorrigirRigiSair();
+            agente.isStopped = true; // Para o agente se a caixa não for encontrada
+        }
     }
 }

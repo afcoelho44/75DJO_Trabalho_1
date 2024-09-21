@@ -11,6 +11,7 @@ TagManager:
   - Mascote
   - InimigoBoss
   - InimigoComum
+  - CaixaDeVida
   layers:
   - Default
   - TransparentFX
