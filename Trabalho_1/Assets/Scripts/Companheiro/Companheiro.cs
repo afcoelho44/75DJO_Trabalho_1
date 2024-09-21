@@ -21,6 +21,10 @@ public class Companheiro : MonoBehaviour, ILevarDano
     public int vida = 30;
     public GameObject companheiro;
     public Slider sliderVida;
+    public AudioSource audioSrc;
+    public AudioClip somMorte;
+    public AudioClip somPasso;
+    public AudioClip somAtaque;
 
     //public AudioSource audioSrc;
     //public AudioClip somPasso;
@@ -33,7 +37,8 @@ public class Companheiro : MonoBehaviour, ILevarDano
         fov = GetComponent<CompanheiroFieldOfView>();
         ultimaPosicaoPlayer = player.transform.position;
 
-        //audioSrc = GetComponent<AudioSource>();
+        audioSrc = GetComponent<AudioSource>();
+        audioSrc.loop = false; 
     }
 
     void Update()
@@ -91,6 +96,14 @@ public class Companheiro : MonoBehaviour, ILevarDano
             anim.SetBool("parado", false);
             anim.SetBool("podeAndar", true);
             CorrigirRigiEntrar();
+
+            // Tocar som de passos em loop apenas se não estiver tocando
+            if (!audioSrc.isPlaying)
+            {
+                audioSrc.loop = true; // Habilitar o loop para som de passos
+                audioSrc.clip = somPasso;
+                audioSrc.Play();
+            }
             agente.SetDestination(posicaoDestino);
         }
     }
@@ -100,6 +113,12 @@ public class Companheiro : MonoBehaviour, ILevarDano
         agente.isStopped = true;
         anim.SetBool("parado", true);
         anim.SetBool("podeAndar", false);
+
+        if (audioSrc.isPlaying && audioSrc.clip == somPasso)
+        {
+            audioSrc.Stop(); // Parar o som de passos
+        }
+
         CorrigirRigiSair();
     }
 
@@ -113,6 +132,9 @@ public class Companheiro : MonoBehaviour, ILevarDano
 
                 if (distanciaDoInimigo < alcanceAtaque && Time.time >= tempoUltimoAtaque + intervaloAtaque)
                 {
+                    audioSrc.loop = false;
+                    audioSrc.clip = somAtaque;
+                    audioSrc.Play();
                     agente.isStopped = false;
                     anim.SetTrigger("ataque");
                     anim.SetBool("podeAndar", false);
@@ -139,6 +161,13 @@ public class Companheiro : MonoBehaviour, ILevarDano
                 {
                     agente.isStopped = false;
                     agente.SetDestination(inimigo.transform.position);
+                    // Tocar som de passos em loop apenas se não estiver tocando
+                    if (!audioSrc.isPlaying)
+                    {
+                        audioSrc.loop = true; // Habilitar o loop para som de passos
+                        audioSrc.clip = somPasso;
+                        audioSrc.Play();
+                    }
                     anim.ResetTrigger("ataque");
                 }
             }
@@ -166,14 +195,18 @@ public class Companheiro : MonoBehaviour, ILevarDano
 
     public void LevarDano(int dano)
     {
+        audioSrc.loop = false;
+        audioSrc.clip = somMorte;
+        audioSrc.Play();
         AtualizarVida(-dano);
         agente.isStopped=true;
         anim.SetTrigger("levouDano");
         anim.SetBool("podeAndar", false);
     }
     private void Morreu() {
-        //audioSrc.clip = somMorte;
-        //audioSrc.Play();
+        audioSrc.loop=false;
+        audioSrc.clip = somMorte;
+        audioSrc.Play();
 
         agente.isStopped = true;
         anim.SetBool("podeAndar", false);
@@ -229,6 +262,13 @@ public class Companheiro : MonoBehaviour, ILevarDano
                 agente.isStopped = false;
                 agente.SetDestination(caixa.transform.position);
                 anim.SetBool("podeAndar", true);
+                // Tocar som de passos em loop apenas se não estiver tocando
+                if (!audioSrc.isPlaying)
+                {
+                    audioSrc.loop = true; // Habilitar o loop para som de passos
+                    audioSrc.clip = somPasso;
+                    audioSrc.Play();
+                }
                 CorrigirRigiEntrar();
             }
         }
@@ -236,6 +276,10 @@ public class Companheiro : MonoBehaviour, ILevarDano
         {
             anim.SetBool("parado", true);
             anim.SetBool("podeAndar", false);
+            if (audioSrc.isPlaying && audioSrc.clip == somPasso)
+            {
+                audioSrc.Stop(); // Parar o som de passos
+            }
             CorrigirRigiSair();
             agente.isStopped = true; // Para o agente se a caixa não for encontrada
         }
