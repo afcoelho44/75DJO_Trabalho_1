@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Companheiro : MonoBehaviour, ILevarDano
 {
+    public float intervaloAtaque = 1.5f; // Intervalo de tempo entre os ataques (em segundos)
+    private float tempoUltimoAtaque = 0f; // Armazena o tempo do último ataque
     private NavMeshAgent agente;
     private GameObject player;
     private Animator anim;
@@ -16,6 +18,7 @@ public class Companheiro : MonoBehaviour, ILevarDano
     public CompanheiroFieldOfView fov;
     private Vector3 ultimaPosicaoPlayer;
     public int vida = 30;
+    public GameObject companheiro;
 
     //public AudioSource audioSrc;
     //public AudioClip somPasso;
@@ -27,21 +30,29 @@ public class Companheiro : MonoBehaviour, ILevarDano
         anim = GetComponent<Animator>();
         fov = GetComponent<CompanheiroFieldOfView>();
         ultimaPosicaoPlayer = player.transform.position;
+
         //audioSrc = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        
-        if (fov.podeVerInimigo) {
+        if (vida<=0) {
+            Morreu();
+            return;
+        }
+
+        if (fov.podeVerInimigo)
+        {
             SeguirInimigo();
-        }else
-        if (fov.podeVerPlayer && !fov.podeVerInimigo)
+        }
+        else
+        if ( !fov.podeVerInimigo)
         {
             anim.ResetTrigger("ataque");
             VerificarMovimentoJogador();
 
-        }// VerificarAtaque();
+        }
+   
     }
 
     private void VerificarMovimentoJogador()
@@ -89,29 +100,50 @@ public class Companheiro : MonoBehaviour, ILevarDano
 
     private void SeguirInimigo() {
         GameObject inimigo = fov.getInimigo();
-        if (inimigo != null)
+        if (inimigo != null )
         {
-            float distanciaDoInimigo = Vector3.Distance(transform.position, inimigo.transform.position);
+            if (inimigo.GetComponent<InimigoComum>().vida > 0)
+            {
+                float distanciaDoInimigo = Vector3.Distance(transform.position, inimigo.transform.position);
 
-            if (distanciaDoInimigo < alcanceAtaque)
-            {
-                agente.isStopped = false;
-                anim.SetTrigger("ataque");
-                anim.SetBool("podeAndar", false);
-                anim.SetBool("pararAtaque", false);
-                CorrigirRigiEntrar();
-                inimigo.GetComponent<InimigoComum>().LevarDano(3);
+                if (distanciaDoInimigo < alcanceAtaque && Time.time >= tempoUltimoAtaque + intervaloAtaque)
+                {
+                    agente.isStopped = false;
+                    anim.SetTrigger("ataque");
+                    anim.SetBool("podeAndar", false);
+                    anim.SetBool("pararAtaque", false);
+                    CorrigirRigiEntrar();
+                    inimigo.GetComponent<InimigoComum>().LevarDano(3);
+
+                    // Atualiza o tempo do último ataque
+                    tempoUltimoAtaque = Time.time;
+
+                    // Se a vida do inimigo chegar a 0 após o ataque, interrompe o ataque
+                    if (inimigo.GetComponent<InimigoComum>().vida <= 0)
+                    {
+                        anim.SetBool("pararAtaque", true);
+                        CorrigirRigiSair();
+                    }
+                }
+                if (distanciaDoInimigo >= alcanceAtaque + 1)
+                {
+                    anim.SetBool("pararAtaque", true);
+                    CorrigirRigiSair();
+                }
+                if (anim.GetBool("podeAndar"))
+                {
+                    agente.isStopped = false;
+                    agente.SetDestination(inimigo.transform.position);
+                    anim.ResetTrigger("ataque");
+                }
             }
-            if (distanciaDoInimigo >= alcanceAtaque + 1 || inimigo.GetComponent<InimigoComum>().vida <=0)
+            else
             {
+                // Se o inimigo estiver morto, para o ataque e reseta as animações
                 anim.SetBool("pararAtaque", true);
                 CorrigirRigiSair();
-            }
-            if (anim.GetBool("podeAndar"))
-            {
-                agente.isStopped = false;
-                agente.SetDestination(inimigo.transform.position);
                 anim.ResetTrigger("ataque");
+                agente.isStopped = false; // O companheiro pode seguir outros alvos ou se mover
             }
         }
         else {
@@ -133,5 +165,39 @@ public class Companheiro : MonoBehaviour, ILevarDano
         agente.isStopped=true;
         anim.SetTrigger("levouDano");
         anim.SetBool("podeAndar", false);
+    }
+    private void Morreu() {
+        //audioSrc.clip = somMorte;
+        //audioSrc.Play();
+
+        agente.isStopped = true;
+        anim.SetBool("podeAndar", false);
+        anim.SetBool("pararAtaque", true);
+
+        anim.SetBool("morreu", true);
+
+        StartCoroutine(EsperarFimDaAnimacao());
+      
+        this.enabled = false; //para de executar esse script
+        fov.enabled = false;
+    }
+    private void DestruirCompanheiro()
+    {
+        Destroy(companheiro);
+    }
+    private IEnumerator EsperarFimDaAnimacao()
+    {
+        // Obtém o estado atual da animação
+        AnimatorStateInfo estadoAnimacao = anim.GetCurrentAnimatorStateInfo(0);
+
+        // Espera até que o estado atual seja o da animação de morte e ela tenha terminado
+        while (!estadoAnimacao.IsName("Morrendo") || estadoAnimacao.normalizedTime < 1.0f)
+        {
+            estadoAnimacao = anim.GetCurrentAnimatorStateInfo(0);
+            yield return null; // Espera o próximo frame
+        }
+
+        // Depois que a animação termina, destrói o inimigo
+        DestruirCompanheiro();
     }
 }

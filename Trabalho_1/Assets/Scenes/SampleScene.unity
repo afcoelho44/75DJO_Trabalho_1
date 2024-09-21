@@ -337,12 +337,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967554f3fff29344796e9f3bb5180c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intervaloAtaque: 1.5
   distanciaSeguir: 3
   distanciaParar: 2
   offsetSeguir: 1.5
   alcanceAtaque: 1.5
-  danoAtaque: 10
+  danoAtaque: 3
   fov: {fileID: 0}
+  vida: 30
+  companheiro: {fileID: 95550943}
 --- !u!195 &95550947
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -353,7 +356,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 5000
@@ -431,6 +434,19 @@ MonoBehaviour:
   anguloVisao: 180
   podeVerPlayer: 0
   podeVerInimigo: 0
+--- !u!114 &95550955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95550943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f1bee85ba1da045aabbfee4554cc43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 20
 --- !u!1 &99779867
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 767769759177606308, guid: 050afb75507221742abf39c71ae3d956, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20501,6 +20517,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       insertIndex: -1
       addedObject: {fileID: 95550952}
+    - targetCorrespondingSourceObject: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 95550955}
   m_SourcePrefab: {fileID: 100100000, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
 --- !u!1 &1826070663
 GameObject:
