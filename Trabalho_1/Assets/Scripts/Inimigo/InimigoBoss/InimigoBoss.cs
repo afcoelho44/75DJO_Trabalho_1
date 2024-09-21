@@ -17,6 +17,7 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
     private AudioSource audioSrc;
     private FieldOfView fov;
     private PatrulharAleatorio pal;
+    public GameObject local;
 
 
     void Start()
@@ -71,6 +72,7 @@ public class InimigoBoss : MonoBehaviour, ILevarDano
         anim.SetBool("podeAndar", false);
     }
     private void Morrer() {
+        local.GetComponent<GerenciadorInimigos>().InimigoBossMorto();
         audioSrc.clip = somMorte;
         audioSrc.Play();
         agente.isStopped = true;

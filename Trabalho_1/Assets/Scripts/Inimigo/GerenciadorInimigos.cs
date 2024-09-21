@@ -1,3 +1,4 @@
+using SunTemple;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,11 @@ using UnityEngine;
 public class GerenciadorInimigos : MonoBehaviour
 {
     public GameObject[] inimigos; // Array de inimigos (até 10 inimigos)
-    private int inimigosMortos = 0; // Contador de inimigos mortos
+    public int inimigosMortos = 0; // Contador de inimigos mortos
     public int inimigosAtivos = 3; // Inimigos ativos inicialmente
-
+    public GameObject boss;
+    public GameObject door;
+    public GameObject companheiro;
     void Start()
     {
         // Ativa os 3 primeiros inimigos no início
@@ -20,6 +23,16 @@ public class GerenciadorInimigos : MonoBehaviour
         for (int i = inimigosAtivos; i < inimigos.Length; i++)
         {
             inimigos[i].SetActive(false);
+        }
+
+        if (boss != null) {
+            boss.SetActive(false);
+        }if (companheiro != null) {
+            companheiro.SetActive(false);
+            companheiro.GetComponent<Companheiro>().sliderVida.gameObject.SetActive(false);
+        }
+        if (door != null) {
+            door.GetComponent<Door>().IsLocked = true;
         }
     }
 
@@ -35,5 +48,30 @@ public class GerenciadorInimigos : MonoBehaviour
             inimigos[inimigosAtivos].SetActive(true);
             inimigosAtivos++;
         }
+        else  
+        if(inimigosMortos == inimigos.Length)
+        {
+            AtivarBoss();
+        }
+    }
+    public void AtivarBoss() {
+        if (boss != null) { 
+            boss.SetActive(true);
+        }
+    }
+    public void InimigoBossMorto() {
+        liberarPorta();
+        AtivarCompanheiro();
+    }
+    public void liberarPorta() {
+        if(door!= null)
+        door.GetComponent<Door>().IsLocked = false;
+    }
+    public void AtivarCompanheiro() {
+        if(companheiro != null) {
+            companheiro.SetActive(true);
+            companheiro.GetComponent<Companheiro>().sliderVida.gameObject.SetActive(true);
+        }
+        
     }
 }

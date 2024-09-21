@@ -160,7 +160,7 @@ public class MovimentarPersonagem : MonoBehaviour
         levantarBloqueado = Physics.Raycast(cameraTransform.position, Vector3.up, out hit, 1.1f);
     }
 
-    private void FimDeJogo()
+    public void FimDeJogo()
     {
         //desativar varios componentes
         Time.timeScale = 0; //vai de 0 a 1... 1 eh velocidade normal 0 eh parado
@@ -194,11 +194,11 @@ public class MovimentarPersonagem : MonoBehaviour
 
             }
 
-            telaFimJogo.SetActive(true);
+          
 
         }
-        
 
+        telaFimJogo.SetActive(true);
         estahVivo = false;
     }
     public void ReiniciarJogo() {
