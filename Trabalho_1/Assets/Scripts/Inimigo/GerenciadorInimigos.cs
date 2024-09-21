@@ -10,6 +10,7 @@ public class GerenciadorInimigos : MonoBehaviour
     public int inimigosAtivos = 3; // Inimigos ativos inicialmente
     public GameObject boss;
     public GameObject door;
+    public bool IsNotActiveBoss;
     public GameObject companheiro;
     void Start()
     {
@@ -25,7 +26,7 @@ public class GerenciadorInimigos : MonoBehaviour
             inimigos[i].SetActive(false);
         }
 
-        if (boss != null) {
+        if (IsNotActiveBoss) {
             boss.SetActive(false);
         }if (companheiro != null) {
             companheiro.SetActive(false);
