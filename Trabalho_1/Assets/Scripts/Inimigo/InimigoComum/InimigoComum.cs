@@ -17,6 +17,8 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     private PatrulharAleatorio pal;
     public GameObject inimigo;
     private GameObject mascote;
+    public GameObject local;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -127,6 +129,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     }
 
     private void Morreu() {
+        local.GetComponent<GerenciadorInimigos>().InimigoMorto();
         audioSrc.clip = somMorte;
         audioSrc.Play();
 
@@ -173,5 +176,5 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         // Depois que a animação termina, destrói o inimigo
         DestruirInimigo();
     }
-
+   
 }
