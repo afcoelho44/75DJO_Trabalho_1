@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Companheiro : MonoBehaviour, ILevarDano
 {
@@ -19,6 +20,7 @@ public class Companheiro : MonoBehaviour, ILevarDano
     private Vector3 ultimaPosicaoPlayer;
     public int vida = 30;
     public GameObject companheiro;
+    public Slider sliderVida;
 
     //public AudioSource audioSrc;
     //public AudioClip somPasso;
@@ -46,7 +48,7 @@ public class Companheiro : MonoBehaviour, ILevarDano
             SeguirInimigo();
         }
         else
-        if ( !fov.podeVerInimigo)
+        if (fov.podeVerPlayer && !fov.podeVerInimigo)
         {
             anim.ResetTrigger("ataque");
             VerificarMovimentoJogador();
@@ -161,7 +163,7 @@ public class Companheiro : MonoBehaviour, ILevarDano
 
     public void LevarDano(int dano)
     {
-        vida-=dano;
+        AtualizarVida(-dano);
         agente.isStopped=true;
         anim.SetTrigger("levouDano");
         anim.SetBool("podeAndar", false);
@@ -175,7 +177,7 @@ public class Companheiro : MonoBehaviour, ILevarDano
         anim.SetBool("pararAtaque", true);
 
         anim.SetBool("morreu", true);
-
+        sliderVida.gameObject.SetActive(false);
         StartCoroutine(EsperarFimDaAnimacao());
       
         this.enabled = false; //para de executar esse script
@@ -199,5 +201,10 @@ public class Companheiro : MonoBehaviour, ILevarDano
 
         // Depois que a animação termina, destrói o inimigo
         DestruirCompanheiro();
+    }
+    public void AtualizarVida(int novaVida) {
+        vida = Mathf.CeilToInt(Mathf.Clamp(vida + novaVida, 0, 100));
+
+        sliderVida.value= vida; 
     }
 }

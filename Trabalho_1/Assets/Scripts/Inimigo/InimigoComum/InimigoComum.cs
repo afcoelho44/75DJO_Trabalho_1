@@ -16,11 +16,13 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     public FieldOfView fov;
     private PatrulharAleatorio pal;
     public GameObject inimigo;
+    private GameObject mascote;
     // Start is called before the first frame update
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
+        mascote = GameObject.FindWithTag("Mascote");
         anim = GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
         fov = GetComponent<FieldOfView>();
@@ -57,6 +59,32 @@ public class InimigoComum : MonoBehaviour, ILevarDano
             anim.ResetTrigger("ataque");
         }
     }
+    private void VaiAtrasMascote()
+    {
+        float distanciaDoMascote = Vector3.Distance(transform.position, mascote.transform.position);
+        if (distanciaDoMascote < distanciaDoAtaque)
+        {
+            agente.isStopped = true;
+            // Debug.Log("Ataque");
+
+            anim.SetTrigger("ataque");
+            anim.SetBool("podeAndar", false);
+            anim.SetBool("pararAtaque", false);
+            CorrigirRigiEntrar();
+        }
+        if (distanciaDoMascote >= distanciaDoAtaque + 1)
+        {
+            anim.SetBool("pararAtaque", true);
+            CorrigirRigiSair();
+        }
+        if (anim.GetBool("podeAndar"))
+        {
+            agente.isStopped = false;
+            agente.SetDestination(mascote.transform.position);
+            anim.ResetTrigger("ataque");
+        }
+    }
+
 
     //private void OlharParaJogador() { 
     //    Vector3 direcaoOlhar = player.transform.position - transform.position;
@@ -80,6 +108,9 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         if (fov.podeVerPlayer)
         {
             VaiAtrasJogador();
+        }
+        else if(fov.podeVerMascote) {
+            VaiAtrasMascote();
         }
         else {
             anim.SetBool("pararAtaque", true);
@@ -112,8 +143,14 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         
     }
     public void DarDano() {
-        player.GetComponent<MovimentarPersonagem>().AtualizarVida(-10);
+        if (fov.podeVerPlayer) {
+            player.GetComponent<MovimentarPersonagem>().AtualizarVida(-10);
+        } else if (fov.podeVerMascote) {
+            mascote.GetComponent<Companheiro>().LevarDano(10);
+        }
+        
     }
+  
     public void Passo() {
         //ideal para sons repetitivos
         audioSrc.PlayOneShot(somPasso, 0.5f);
