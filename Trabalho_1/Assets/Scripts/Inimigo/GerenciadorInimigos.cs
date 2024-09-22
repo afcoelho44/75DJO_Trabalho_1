@@ -11,7 +11,8 @@ public class GerenciadorInimigos : MonoBehaviour
     public GameObject boss;
     public GameObject door;
     public bool IsNotActiveBoss;
-    public GameObject companheiro;
+    //public GameObject companheiro;
+    public GameObject somAmbiente;
     void Start()
     {
         // Ativa os 3 primeiros inimigos no início
@@ -28,12 +29,14 @@ public class GerenciadorInimigos : MonoBehaviour
 
         if (IsNotActiveBoss) {
             boss.SetActive(false);
-        }if (companheiro != null) {
-            companheiro.SetActive(false);
-            companheiro.GetComponent<Companheiro>().sliderVida.gameObject.SetActive(false);
         }
+        //if (companheiro != null) {
+            //companheiro.SetActive(false);
+            //companheiro.GetComponent<Companheiro>().sliderVida.gameObject.SetActive(false);
+        //}
         if (door != null) {
             door.GetComponent<Door>().IsLocked = true;
+            door.GetComponent<Outline>().OutlineWidth = 0f;
         }
     }
 
@@ -62,17 +65,20 @@ public class GerenciadorInimigos : MonoBehaviour
     }
     public void InimigoBossMorto() {
         liberarPorta();
-        AtivarCompanheiro();
+        //AtivarCompanheiro();
     }
     public void liberarPorta() {
         if(door!= null)
         door.GetComponent<Door>().IsLocked = false;
+        door.GetComponent<Outline>().OutlineWidth = 5f;
+        somAmbiente.GetComponent<ControlAmbiente>().SomPorta();
+
     }
-    public void AtivarCompanheiro() {
-        if(companheiro != null) {
-            companheiro.SetActive(true);
-            companheiro.GetComponent<Companheiro>().sliderVida.gameObject.SetActive(true);
-        }
+    //public void AtivarCompanheiro() {
+    //    if(companheiro != null) {
+    //        companheiro.SetActive(true);
+    //        companheiro.GetComponent<Companheiro>().sliderVida.gameObject.SetActive(true);
+    //    }
         
-    }
+    //}
 }
