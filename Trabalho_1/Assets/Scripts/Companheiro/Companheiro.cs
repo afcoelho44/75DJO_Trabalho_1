@@ -31,6 +31,10 @@ public class Companheiro : MonoBehaviour, ILevarDano
 
     void Start()
     {
+        Iniciar();
+    }
+    public void Iniciar()
+    {
         agente = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
@@ -38,32 +42,51 @@ public class Companheiro : MonoBehaviour, ILevarDano
         ultimaPosicaoPlayer = player.transform.position;
 
         audioSrc = GetComponent<AudioSource>();
-        audioSrc.loop = false; 
+        audioSrc.loop = false;
     }
 
     void Update()
     {
-        if (vida<=0) {
+        if (vida <= 0)
+        {
             Morreu();
             return;
-        }else
-
-        if (fov.podeVerCaixa && player.GetComponent<MovimentarPersonagem>().vida < 100) {
-            PegarVida();
-        }else
-        if (fov.podeVerInimigo)
-        {
-            SeguirInimigo();
         }
-        else
-        if (fov.podeVerPlayer && !fov.podeVerInimigo)
-        {
-            anim.ResetTrigger("ataque");
-            VerificarMovimentoJogador();
+        else {
+            float distanciaDoPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+            if (distanciaDoPlayer > distanciaSeguir)
+            {
+                EsperarJogador(); // Fica parado até o jogador se aproximar
+            }
+            else
+                    if (fov.podeVerCaixa && player.GetComponent<MovimentarPersonagem>().vida < 100)
+            {
+                PegarVida();
+            }
+            else
+            if (fov.podeVerInimigo)
+                {
+                    SeguirInimigo();
+                }
+            else
+            if (fov.podeVerPlayer && !fov.podeVerInimigo && !fov.podeVerCaixa)
+            {
+                anim.ResetTrigger("ataque");
+                VerificarMovimentoJogador();
+
+            }
 
         }
    
     }
+
+    private void EsperarJogador()
+    {
+        // Faz o companheiro ficar parado, esperando o jogador
+        PararCompanheiro();
+    }
+
 
     private void VerificarMovimentoJogador()
     {

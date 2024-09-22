@@ -63,6 +63,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
     }
     private void VaiAtrasMascote()
     {
+        mascote = GameObject.FindWithTag("Mascote");
         float distanciaDoMascote = Vector3.Distance(transform.position, mascote.transform.position);
         if (distanciaDoMascote < distanciaDoAtaque)
         {

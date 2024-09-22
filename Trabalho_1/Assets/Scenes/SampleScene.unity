@@ -175,6 +175,14 @@ PrefabInstance:
       propertyPath: vida
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 3395247}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1180,6 +1188,14 @@ PrefabInstance:
       propertyPath: vida
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 147639546}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14923,14 +14939,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65407762813296278, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114024915918922976, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
+      propertyPath: IsLocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114423855575952582, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
+      propertyPath: IsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924165436354858, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
       propertyPath: IsLocked
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1490589718875678, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 698725167}
+    - targetCorrespondingSourceObject: {fileID: 1372814800615594, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 900506449}
   m_SourcePrefab: {fileID: 100100000, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
 --- !u!1001 &221239206
 PrefabInstance:
@@ -15265,6 +15299,14 @@ PrefabInstance:
       propertyPath: vida
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 255472225}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16368,6 +16410,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 420332631}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18035,12 +18085,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 65033756270873268, guid: 47c63a7c35921e24ab8db77d681d9688, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1197375815822682, guid: 47c63a7c35921e24ab8db77d681d9688, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 592737161}
   m_SourcePrefab: {fileID: 100100000, guid: 47c63a7c35921e24ab8db77d681d9688, type: 3}
 --- !u!1 &544711767
 GameObject:
@@ -18171,6 +18224,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7231379694999135685, guid: 8874554345ee14946b6ffe26cd08dcea, type: 3}
   m_PrefabInstance: {fileID: 586275115}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &592737155 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1197375815822682, guid: 47c63a7c35921e24ab8db77d681d9688, type: 3}
+  m_PrefabInstance: {fileID: 537972407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &592737161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592737155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304b5e25eabb61640aff1b8dcb629d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somAmbiente: {fileID: 303547866}
 --- !u!1001 &617497961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18641,6 +18712,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6074941380987673174, guid: 5b313353c48814e45a72110311aade93, type: 3}
   m_PrefabInstance: {fileID: 696159400}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &698725164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1490589718875678, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
+  m_PrefabInstance: {fileID: 217615726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &698725167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698725164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92df0984ce8842a40a86ef199079a3b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somAmbiente: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -19074,6 +19163,14 @@ PrefabInstance:
       propertyPath: vida
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 781749367}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19489,6 +19586,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1372814800615594, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
   m_PrefabInstance: {fileID: 217615726}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &900506449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900506443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92df0984ce8842a40a86ef199079a3b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somAmbiente: {fileID: 303547866}
 --- !u!1001 &921918699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20424,6 +20534,14 @@ PrefabInstance:
       propertyPath: vida
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 1088238492}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20813,8 +20931,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1135059061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21176,7 +21294,7 @@ PrefabInstance:
     - target: {fileID: 6390753284536509191, guid: 050afb75507221742abf39c71ae3d956, type: 3}
       propertyPath: local
       value: 
-      objectReference: {fileID: 1244933348}
+      objectReference: {fileID: 1929624267}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21461,6 +21579,14 @@ PrefabInstance:
       propertyPath: vida
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 1279478364}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21574,6 +21700,14 @@ PrefabInstance:
       propertyPath: vida
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 1327419647}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21641,6 +21775,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 1358009623}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21712,6 +21854,14 @@ PrefabInstance:
       propertyPath: vida
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 1363557088}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21763,6 +21913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   somAmbiente: {fileID: 303547866}
+  companheiro: {fileID: 95550943}
 --- !u!1 &1390847204
 GameObject:
   m_ObjectHideFlags: 0
@@ -22139,6 +22290,14 @@ PrefabInstance:
       propertyPath: vida
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 1452421352}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22321,6 +22480,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 1505807009}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22564,7 +22731,7 @@ RectTransform:
   m_Father: {fileID: 298552004}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000015258789, y: 0}
   m_SizeDelta: {x: -0.000030518, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22983,7 +23150,6 @@ MonoBehaviour:
   boss: {fileID: 171620831}
   door: {fileID: 1388481784}
   IsNotActiveBoss: 1
-  companheiro: {fileID: 95550943}
   somAmbiente: {fileID: 303547866}
 --- !u!1001 &1608643155
 PrefabInstance:
@@ -23630,6 +23796,14 @@ PrefabInstance:
       propertyPath: vida
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 1697378733}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25055,7 +25229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       propertyPath: m_TagString
@@ -25126,6 +25300,9 @@ PrefabInstance:
       addedObject: {fileID: 95550947}
     - targetCorrespondingSourceObject: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 95550953}
+    - targetCorrespondingSourceObject: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 95550944}
     - targetCorrespondingSourceObject: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       insertIndex: -1
@@ -25136,9 +25313,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       insertIndex: -1
       addedObject: {fileID: 95550952}
-    - targetCorrespondingSourceObject: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 95550953}
   m_SourcePrefab: {fileID: 100100000, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
 --- !u!1001 &1818206717
 PrefabInstance:
@@ -25192,6 +25366,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 1818206719}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26333,8 +26515,7 @@ MonoBehaviour:
   boss: {fileID: 1238367812}
   door: {fileID: 900506443}
   IsNotActiveBoss: 0
-  companheiro: {fileID: 0}
-  somAmbiente: {fileID: 0}
+  somAmbiente: {fileID: 303547866}
 --- !u!1 &1932913654
 GameObject:
   m_ObjectHideFlags: 0
@@ -27071,7 +27252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2039204944
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27201,6 +27382,14 @@ PrefabInstance:
       propertyPath: vida
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: local
+      value: 
+      objectReference: {fileID: 1929624267}
+    - target: {fileID: 9096198509408664986, guid: 86d01ac31995e6341aa774edb03dcc19, type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 2046664034}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
