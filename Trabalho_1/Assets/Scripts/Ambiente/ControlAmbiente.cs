@@ -54,7 +54,10 @@ public class ControlAmbiente : MonoBehaviour
         audioAmbiente.clip = somIgreja;
         audioAmbiente.Play();
     }
-
+    public void PararSomAmbiente()
+    {
+        audioAmbiente.Stop();
+    }
     void Update()
     {
         // Aqui você pode adicionar lógicas para mudar o som de ambiente com base na localização, se necessário

@@ -45,6 +45,7 @@ public class MovimentarPersonagem : MonoBehaviour
     public Button menu;
     public Button exit;
     public Text textScore;
+    public GameObject somAmbiente;
     public void AtualizarVida(int novaVida) {
 
         if (novaVida > 0) {
@@ -167,6 +168,7 @@ public class MovimentarPersonagem : MonoBehaviour
                             // entre 0 e 1 eh possível configurar camera lentaCamera
         //Camera.main.GetComponent<AudioListener>().enabled = false;
         audioSrc.Stop();
+        somAmbiente.GetComponent<ControlAmbiente>().PararSomAmbiente();
         GetComponentInChildren<Glock>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

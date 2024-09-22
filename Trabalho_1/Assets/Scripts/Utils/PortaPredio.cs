@@ -7,35 +7,46 @@ public class PortaPredio : MonoBehaviour
     public GameObject somAmbiente;
     public GameObject companheiro;
 
-    private bool IsDentro = true; // Controla se o jogador está dentro ou fora do prédio
+    private bool IsDentro;
+
+    // Inicializa o estado ao iniciar o jogo ou reiniciar a cena
+    void Start()
+    {
+        IsDentro = true; // O jogador começa dentro da casa
+        somAmbiente.GetComponent<ControlAmbiente>().SomCasa(); 
+        companheiro.SetActive(false); 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) // Verifica se é o jogador
         {
-            if (!IsDentro) // Se o jogador estiver do lado de fora e entrou no prédio
+            if (!IsDentro) // Se o jogador estava fora e entrou na casa
             {
                 somAmbiente.GetComponent<ControlAmbiente>().SomCasa();
-                IsDentro = true; // Atualiza para indicar que está dentro
-
-                if (companheiro != null && !companheiro.activeSelf)
-                {
-                    companheiro.SetActive(true); // Ativa o companheiro se ele não estiver ativo
-
-                    Companheiro compScript = companheiro.GetComponent<Companheiro>();
-                    if (compScript != null)
-                    {
-                        compScript.Iniciar(); // Chama o método de inicialização do companheiro
-                        compScript.sliderVida.gameObject.SetActive(true); // Ativa a barra de vida
-                    }
-                }
+                IsDentro = true; // Atualiza para indicar que está dentro da casa
             }
-            else // Se o jogador estiver dentro e saiu para fora
+            else // Se o jogador estava dentro e saiu para fora
             {
                 somAmbiente.GetComponent<ControlAmbiente>().SomNatureza();
-                IsDentro = false; // Atualiza para indicar que está fora
+                IsDentro = false; // Atualiza para indicar que está fora da casa
+                AtivarCompanheiro(); // Ativa o companheiro ao sair da casa
             }
         }
     }
 
+    // Método para ativar o companheiro quando o jogador sai da casa
+    private void AtivarCompanheiro()
+    {
+        if (!companheiro.activeSelf)
+        {
+            companheiro.SetActive(true); // Ativa o companheiro
+            Companheiro compScript = companheiro.GetComponent<Companheiro>();
+            if (compScript != null)
+            {
+                compScript.Iniciar(); // Inicia o comportamento do companheiro
+                compScript.sliderVida.gameObject.SetActive(true); // Ativa a barra de vida do companheiro
+            }
+        }
+    }
 }

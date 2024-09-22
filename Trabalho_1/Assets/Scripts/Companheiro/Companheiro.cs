@@ -26,8 +26,7 @@ public class Companheiro : MonoBehaviour, ILevarDano
     public AudioClip somPasso;
     public AudioClip somAtaque;
 
-    //public AudioSource audioSrc;
-    //public AudioClip somPasso;
+   
 
     void Start()
     {
@@ -233,6 +232,7 @@ public class Companheiro : MonoBehaviour, ILevarDano
 
         agente.isStopped = true;
         anim.SetBool("podeAndar", false);
+        anim.SetBool("parado", false);
         anim.SetBool("pararAtaque", true);
 
         anim.SetBool("morreu", true);

@@ -14965,6 +14965,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1372814800615594, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 900506449}
+    - targetCorrespondingSourceObject: {fileID: 1372814800615594, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 900506455}
   m_SourcePrefab: {fileID: 100100000, guid: 7ba2845aa97948a4b8bee3a62a942ab2, type: 3}
 --- !u!1001 &221239206
 PrefabInstance:
@@ -19599,6 +19602,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   somAmbiente: {fileID: 303547866}
+--- !u!114 &900506455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900506443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &921918699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22111,6 +22132,7 @@ MonoBehaviour:
   menu: {fileID: 1517082200}
   exit: {fileID: 338262809}
   textScore: {fileID: 1465764643}
+  somAmbiente: {fileID: 303547866}
 --- !u!143 &1434842800
 CharacterController:
   m_ObjectHideFlags: 0
