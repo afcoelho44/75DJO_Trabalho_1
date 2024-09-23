@@ -265,6 +265,7 @@ public class Companheiro : MonoBehaviour, ILevarDano
             float distanciaDaCaixa = Vector3.Distance(transform.position, caixa.transform.position);
 
             // Se o companheiro estiver perto da caixa de vida, pega a caixa
+
             if (distanciaDaCaixa < 1.0f)
             {
                 caixa.GetComponent<CaixaDeVida>().Pegar();
@@ -286,16 +287,6 @@ public class Companheiro : MonoBehaviour, ILevarDano
                 CorrigirRigiEntrar();
             }
         }
-        else
-        {
-            anim.SetBool("parado", true);
-            anim.SetBool("podeAndar", false);
-            if (audioSrc.isPlaying && audioSrc.clip == somPasso)
-            {
-                audioSrc.Stop(); // Parar o som de passos
-            }
-            CorrigirRigiSair();
-            agente.isStopped = true; // Para o agente se a caixa não for encontrada
-        }
+
     }
 }
