@@ -150,7 +150,7 @@ public class InimigoComum : MonoBehaviour, ILevarDano
         if (fov.podeVerPlayer) {
             player.GetComponent<MovimentarPersonagem>().AtualizarVida(-10);
         } else if (fov.podeVerMascote) {
-            mascote.GetComponent<Companheiro>().LevarDano(10);
+            mascote.GetComponent<Companheiro>().LevarDano(3);
         }
         
     }

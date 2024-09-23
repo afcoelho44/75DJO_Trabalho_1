@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CaixaDeVida : MonoBehaviour, IPegavel
 {
-
+    public GameObject caixa;
     public void Pegar()
     {
 
@@ -12,6 +12,7 @@ public class CaixaDeVida : MonoBehaviour, IPegavel
         Companheiro mascote = GameObject.FindWithTag("Mascote").GetComponent<Companheiro>();
         player.AtualizarVida(30);
         mascote.AtualizarVida(10);
+        Destroy(caixa);
        
     }
     // Start is called before the first frame update

@@ -52,24 +52,15 @@ public class Companheiro : MonoBehaviour, ILevarDano
             return;
         }
         else {
-            float distanciaDoPlayer = Vector3.Distance(transform.position, player.transform.position);
-
-            if (distanciaDoPlayer > distanciaSeguir)
-            {
-                EsperarJogador(); // Fica parado até o jogador se aproximar
-            }
-            else
-                    if (fov.podeVerCaixa && player.GetComponent<MovimentarPersonagem>().vida < 100)
+            if (fov.podeVerCaixa && player.GetComponent<MovimentarPersonagem>().vida < 100)
             {
                 PegarVida();
             }
-            else
             if (fov.podeVerInimigo)
-                {
+             {
                     SeguirInimigo();
-                }
-            else
-            if (fov.podeVerPlayer && !fov.podeVerInimigo && !fov.podeVerCaixa)
+            }
+            if (!fov.podeVerInimigo && !fov.podeVerCaixa)
             {
                 anim.ResetTrigger("ataque");
                 VerificarMovimentoJogador();
@@ -277,7 +268,7 @@ public class Companheiro : MonoBehaviour, ILevarDano
             if (distanciaDaCaixa < 1.0f)
             {
                 caixa.GetComponent<CaixaDeVida>().Pegar();
-                Destroy(caixa);
+                //Destroy(caixa);
             }
             else
             {
